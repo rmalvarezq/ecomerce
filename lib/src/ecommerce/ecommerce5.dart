@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ecomerceflt/core/presentation/res/assets.dart';
 import 'package:ecomerceflt/src/widgets/network_image.dart';
@@ -6,74 +7,36 @@ class EcommerceFivePage extends StatelessWidget {
   const EcommerceFivePage({Key key}) : super(key: key);
   static final String path = "lib/src/pages/ecommerce/ecommerce5.dart";
 
-  Widget cards(image, title, price) {
-    return Container(
-      height: 200,
-      width: 200,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey,
-            blurRadius: 6.0,
-          ),
-        ],
-        color: Colors.white,
-      ),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            PNetworkImage(
-              image,
-              height: 80,
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(title,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-            Container(
-                padding: EdgeInsets.all(5),
-                margin: EdgeInsets.only(top: 4),
-                color: Colors.deepOrange,
-                child: Text("\$ " + price,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12))),
-          ],
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
+    // final size = MediaQuery.of(context).size;
     return Scaffold(
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: 1,
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today),
-              title: Text("Today's Special"),
+              label: 'Today Special',
             ),
             BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.fastfood,
-                  color: Colors.deepOrange,
-                ),
-                title: Text(
-                  "Foods",
-                  style: TextStyle(color: Colors.deepOrange),
-                )),
+              icon: Icon(
+                Icons.fastfood,
+                color: Colors.deepOrange,
+              ),
+              label: 'Foods',
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.settings), title: Text("Settings")),
+              icon: Icon(Icons.settings),
+              label: 'Settings',
+            ),
           ],
+          onTap: (value) {
+            Navigator.pushNamed(context, 'onePage');
+          },
         ),
         backgroundColor: Colors.white70.withOpacity(0.9),
-        body: SafeArea(
-          child: Stack(
+        body: Scaffold(
+          body: Stack(
             children: <Widget>[
               Container(
                 height: 300,
@@ -125,6 +88,7 @@ class EcommerceFivePage extends StatelessWidget {
                             child: TextField(
                               controller:
                                   TextEditingController(text: 'Search...'),
+                              // Navigator.push(context, route)
                               cursorColor: Theme.of(context).primaryColor,
                               style:
                                   TextStyle(color: Colors.black, fontSize: 18),
@@ -163,5 +127,47 @@ class EcommerceFivePage extends StatelessWidget {
             ],
           ),
         ));
+  }
+
+  Widget cards(image, title, price) {
+    return Container(
+      height: 200,
+      width: 200,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            blurRadius: 6.0,
+          ),
+        ],
+        color: Colors.white,
+      ),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            PNetworkImage(
+              image,
+              height: 80,
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Text(title,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+            Container(
+                padding: EdgeInsets.all(5),
+                margin: EdgeInsets.only(top: 4),
+                color: Colors.deepOrange,
+                child: Text("\$ " + price,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12))),
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -159,9 +159,11 @@ class _CartThreePageState extends State<CartThreePage> {
         padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
         child: InkWell(
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => CartOnePage(),
-              ));
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => CartOnePage(),
+                ),
+              );
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

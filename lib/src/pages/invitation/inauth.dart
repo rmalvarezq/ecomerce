@@ -6,6 +6,7 @@ import '../../../core/presentation/res/assets.dart';
 const TextStyle boldText = TextStyle(
   fontWeight: FontWeight.bold,
 );
+
 class InvitationAuthPage extends StatefulWidget {
   static final String path = "lib/src/pages/invitation/inauth.dart";
   @override
@@ -15,7 +16,7 @@ class InvitationAuthPage extends StatefulWidget {
 class _InvitationAuthPageState extends State<InvitationAuthPage> {
   bool signupForm;
   @override
-  void initState() { 
+  void initState() {
     super.initState();
     signupForm = true;
   }
@@ -97,7 +98,9 @@ class _InvitationAuthPageState extends State<InvitationAuthPage> {
                         ),
                       ),
                       AnimatedSwitcher(
-                        duration: Duration(milliseconds: 200,),
+                        duration: Duration(
+                          milliseconds: 200,
+                        ),
                         child: signupForm ? SignUp() : SignIn(),
                       ),
                     ],
@@ -111,9 +114,12 @@ class _InvitationAuthPageState extends State<InvitationAuthPage> {
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16.0,
                   ),
-                  child: OutlineButton.icon(
-                    padding: const EdgeInsets.all(16.0),
-                    icon: Icon(FontAwesomeIcons.google,color: Colors.red,),
+                  child: OutlinedButton.icon(
+                    // padding: const EdgeInsets.all(16.0),
+                    icon: Icon(
+                      FontAwesomeIcons.google,
+                      color: Colors.red,
+                    ),
                     label: Text("Google"),
                     onPressed: () {},
                   ),
@@ -157,19 +163,27 @@ class SignUp extends StatelessWidget {
           ),
           const SizedBox(height: 16.0),
           Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 32.0,
-            ),
-            child: RaisedButton(
-              elevation: 0,
-              highlightElevation: 0,
-              textColor: Colors.white,
-              color: Colors.pink,
-              onPressed: (){},
-              child: Text("Sign up"),
-            ),
-          ),
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 32.0,
+              ),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text("Sign up"),
+                style: ButtonStyle(
+                  // elevation: 00.0,
+                  backgroundColor: MaterialStateProperty.all(Colors.pink),
+                ),
+              )
+              // RaisedButton(
+              //   elevation: 0,
+              //   highlightElevation: 0,
+              //   textColor: Colors.white,
+              //   color: Colors.pink,
+              //   onPressed: (){},
+              //   child: Text("Sign up"),
+              // ),
+              ),
           const SizedBox(height: 10.0),
         ],
       ),
@@ -211,10 +225,18 @@ class SignIn extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
               horizontal: 32.0,
             ),
-            child: RaisedButton(
-              elevation: 0,
-              highlightElevation: 0,
-              textColor: Colors.white,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18.0),
+                    side: BorderSide(color: Colors.white),
+                  ),
+                ),
+              ),
+              // elevation: 0,
+              // highlightElevation: 0,
+              // textColor: Colors.white,
               onPressed: () => Navigator.pushNamed(context, 'home'),
               child: Text("Sign In"),
             ),

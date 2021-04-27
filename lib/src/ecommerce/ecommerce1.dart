@@ -1,6 +1,4 @@
-import 'package:ecomerceflt/src/ecommerce/ecommerce2.dart';
-import 'package:ecomerceflt/src/ecommerce/ecommerce4.dart';
-import 'package:ecomerceflt/src/ecommerce/ecommerce5.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
@@ -16,17 +14,12 @@ class EcommerceOnePage extends StatefulWidget {
 
 class _EcommerceOnePageState extends State<EcommerceOnePage> {
   int _selectIndex = 0;
-  List<Widget> _widgetOptions = <Widget>[
-    EcommerceOnePage(),
-    EcommerceTwoPage(),
-    EcommerceFourPage(),
-    EcommerceFivePage(),
-  ];
-  void _onItemTap(int index) {
-    setState(() {
-      _selectIndex = index;
-    });
-  }
+
+  // void _onItemTap(int index) {
+  //   setState(() {
+  //     _selectIndex = index;
+  //   });
+  // }
 
   final List<String> categories = [
     'DarazMall',
@@ -48,6 +41,12 @@ class _EcommerceOnePageState extends State<EcommerceOnePage> {
     assets.backgroundImages[2],
     assets.backgroundImages[1]
   ];
+  // List<Widget> _widgetOptions = <Widget>[
+  //   EcommerceOnePage(),
+  //   EcommerceTwoPage(),
+  //   EcommerceFourPage(),
+  //   EcommerceFivePage(),
+  // ];
 
   Widget _buildListView(_, index) {
     if (index == 0) return _buildSlider();
@@ -324,7 +323,7 @@ class _EcommerceOnePageState extends State<EcommerceOnePage> {
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            padding: EdgeInsets.symmetric(horizontal: 0.0),
             child: Swiper(
               autoplay: true,
               itemBuilder: (BuildContext context, int index) {
@@ -387,10 +386,12 @@ class _EcommerceOnePageState extends State<EcommerceOnePage> {
         elevation: 0,
       ),
       body: SafeArea(
-          child: ListView.builder(
-        itemBuilder: _buildListView,
-        itemCount: 10,
-      )),
+        child: ListView.builder(
+          itemBuilder: _buildListView,
+          itemCount: 10,
+        ),
+      ),
+      // _widgetOptions.elementAt(_selectIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
@@ -401,7 +402,7 @@ class _EcommerceOnePageState extends State<EcommerceOnePage> {
         ],
         // onTap: ,
         currentIndex: _selectIndex,
-        onTap: _onItemTap,
+        onTap: (value) => Navigator.pushNamed(context, 'ecomerce2'),
         type: BottomNavigationBarType.fixed,
         fixedColor: Colors.red,
       ),

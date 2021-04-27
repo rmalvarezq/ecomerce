@@ -10,6 +10,7 @@ import 'package:ecomerceflt/src/ecommerce/ecommerce5.dart';
 import 'package:ecomerceflt/src/ecommerce/ecommerce_detail1.dart';
 import 'package:ecomerceflt/src/ecommerce/ecommerce_detail2.dart';
 import 'package:ecomerceflt/src/ecommerce/ecommerce_detail3.dart';
+import 'package:ecomerceflt/src/pages/perfil_page.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -25,7 +26,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
         accentColor: Colors.indigo,
       ),
-      home: CartOnePage(),
+      // home: BlocExamplePage(),
+      home: PerfilPage(),
       routes: {
         'onePage': (_) => CartOnePage(),
         'twoPage': (_) => CartTwoPage(),

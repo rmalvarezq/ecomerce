@@ -1,4 +1,4 @@
-
+import 'package:ecomerceflt/src/ecommerce/ecommerce4.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ecomerceflt/core/presentation/res/assets.dart';
@@ -71,28 +71,42 @@ class EcommerceTwoPage extends StatelessWidget {
         itemBuilder: _buildListView,
         itemCount: items.length + 1,
       )),
-      bottomNavigationBar: _buildBottomNavigationBar(),
+      bottomNavigationBar: _buildBottomNavigationBar(context),
     );
   }
 
-  Widget _buildBottomNavigationBar() {
+  Widget _buildBottomNavigationBar(BuildContext context) {
     return BottomNavigationBar(
-      items: <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-            icon: Icon(Icons.category), title: Text("Shop")),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border), title: Text("Favorites")),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.notifications), title: Text("Notifications")),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.location_on), title: Text("Near me")),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.settings), title: Text("Settings")),
-      ],
-      currentIndex: 0,
-      type: BottomNavigationBarType.fixed,
-      fixedColor: Colors.red,
-    );
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.category),
+            label: 'Shop',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_border),
+            label: 'Favorites',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications),
+            label: 'Notifications',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.location_on),
+            label: 'Near me',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+        currentIndex: 0,
+        type: BottomNavigationBarType.fixed,
+        fixedColor: Colors.red,
+        onTap: (value) => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => EcommerceFourPage(),
+              ),
+            ));
   }
 
   PreferredSize _buildBottomBar() {
